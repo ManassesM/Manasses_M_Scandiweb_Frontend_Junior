@@ -17,8 +17,8 @@ export class Popper extends PureComponent<PopperProps> {
 			<S.PopperBackground onClick={this.props.onClose}>
 				<S.PopperContainer
 					onClick={(e) => e.stopPropagation()}
-					width={this.props.width || 100}
-					height={this.props.height || 100}
+					width={this.props.width || 114}
+					height={this.props.height || 200}
 				>
 					{this.props.children}
 				</S.PopperContainer>

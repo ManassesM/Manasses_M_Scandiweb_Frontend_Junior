@@ -1,7 +1,8 @@
 import logo from 'assets/icons/logo.svg'
-import HeaderActions from 'components/HeaderActions'
 import Navigation from 'components/Navigation'
+import Actions from 'containers/Actions'
 import { PureComponent } from 'react'
+
 import * as S from './style'
 
 export class Header extends PureComponent {
@@ -16,7 +17,7 @@ export class Header extends PureComponent {
 					alt='Store Logo'
 					cursor='default'
 				/>
-				<HeaderActions />
+				<Actions />
 			</S.HeaderContainer>
 		)
 	}

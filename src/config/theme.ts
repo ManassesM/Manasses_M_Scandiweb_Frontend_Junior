@@ -3,6 +3,7 @@ export const theme = {
 		main: '#5ECE7B',
 		black: '#1D1F22',
 		white: '#FFFFFF',
+		whiteHover: '#EEEEEE',
 	},
 	typography: {
 		fontFamily: {

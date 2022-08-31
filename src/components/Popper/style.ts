@@ -19,6 +19,8 @@ export const PopperContainer = styled.div<PopperContainerProps>`
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
 	background: #ffffff;
+
+  overflow-y: auto;
 `
 
 export const PopperBackground = styled.div`

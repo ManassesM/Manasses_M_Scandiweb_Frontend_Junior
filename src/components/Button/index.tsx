@@ -1,6 +1,7 @@
 import { theme } from 'config/theme'
 import { PureComponent } from 'react'
-import { ButtonStyle } from './style'
+
+import * as S from './style'
 
 interface ButtonProps {
 	text: string
@@ -16,7 +17,7 @@ interface ButtonProps {
 export class Button extends PureComponent<ButtonProps> {
 	render() {
 		return (
-			<ButtonStyle
+			<S.ButtonStyle
 				width={this.props.width || 100}
 				height={this.props.height || 50}
 				bgColor={this.props.bgColor || theme.palette.white}
@@ -26,7 +27,7 @@ export class Button extends PureComponent<ButtonProps> {
 				disabled={this.props.disabled || false}
 			>
 				{this.props.text}
-			</ButtonStyle>
+			</S.ButtonStyle>
 		)
 	}
 }

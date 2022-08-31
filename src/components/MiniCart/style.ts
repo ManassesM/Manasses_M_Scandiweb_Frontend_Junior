@@ -21,12 +21,13 @@ export const CartAmount = styled.div`
 	background: ${({ theme }) => theme.palette.black};
 `
 
-export const MiniCart = styled(Image)<{ content?: number }>`
+export const MiniCart = styled(Image)`
 	z-index: 2;
 `
 
 export const MiniCartContainer = styled.div`
 	position: relative;
+  cursor: pointer;
 
 	display: flex;
 	width: 20px;
