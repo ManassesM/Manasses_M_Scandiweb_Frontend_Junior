@@ -27,11 +27,11 @@ export class ProductsContainer extends PureComponent<ProductsContainerProps> {
 					if (loading) return <LoadingSpinner />
 
 					return (
-						<S.Grid>
+						<S.ProductsGrid>
 							{data?.category.products.map((product) => (
 								<ProductCard {...product}>{product.id}</ProductCard>
 							))}
-						</S.Grid>
+						</S.ProductsGrid>
 					)
 				}}
 			</Query>
