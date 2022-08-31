@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 
-export class Product extends Component {
+export class Product extends PureComponent {
 	render() {
 		return <div>Product</div>
 	}

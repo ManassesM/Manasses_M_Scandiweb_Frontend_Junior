@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
 	html,
 	body {
 		font-family: ${theme.typography.fontFamily.raleway};
+    font-size: ${theme.typography.fontSize};
+    font-weight: ${theme.typography.fontWeigth.regular};
 		color: ${theme.palette.black};
 		background: ${theme.palette.white};
 		line-height: ${theme.typography.lineHeight};

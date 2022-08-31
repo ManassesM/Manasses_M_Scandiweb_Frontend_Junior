@@ -14,7 +14,7 @@ export class Page extends PureComponent<PageProps> {
 				<Route path='/' element={<Products />} />
 				{this.props.routes.map((category) => (
 					<>
-						<Route path={`/${category.name}`} element={<Products />} />
+						<Route path={`/${category.name || '/'}`} element={<Products />} />
 						<Route path={`/${category.name}/:id`} element={<Product />} />
 					</>
 				))}

@@ -1,8 +1,8 @@
 import Header from 'containers/Header'
 import Routes from 'containers/Routes'
-import { Component } from 'react'
+import { PureComponent } from 'react'
 
-class App extends Component {
+class App extends PureComponent {
 	render() {
 		return (
 			<>
