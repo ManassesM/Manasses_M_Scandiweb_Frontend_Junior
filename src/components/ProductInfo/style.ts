@@ -5,7 +5,7 @@ const Scrollbar = styled.div`
 		width: 4px;
 	}
 	::-webkit-scrollbar-track {
-		background: #ffffff;
+		background: ${({ theme }) => theme.palette.white};
 	}
 	::-webkit-scrollbar-thumb {
 		border-radius: 6px;
@@ -43,6 +43,10 @@ export const WrapperAttributes = styled.section`
 		font-weight: ${({ theme }) => theme.typography.fontWeigth.bold};
 		font-size: 18px;
 		text-transform: uppercase;
+	}
+
+	> div {
+		display: flex;
 	}
 `
 

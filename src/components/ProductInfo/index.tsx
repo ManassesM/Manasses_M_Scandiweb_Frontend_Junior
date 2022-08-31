@@ -1,3 +1,4 @@
+import Attributes from 'containers/Attributes'
 import { Button } from 'components/Button'
 import { theme } from 'config/theme'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
@@ -16,26 +17,20 @@ interface ProductInfoProps extends ProductQueryProps {
 
 export class ProductInfo extends PureComponent<ProductInfoProps> {
 	render() {
-		const { currency, prices } = this.props
+		const { currency, prices, attributes, brand, name } = this.props
+
 		const price = getProductPrice({ currency, prices })
-		const html = this.props.description || ''
-		console.log(html)
+		const html = ReactHtmlParser(this.props.description || '')
+
+		console.log(attributes)
 		return (
 			<S.ProductInfoContainer>
 				<S.InfoText>
-					<strong>{this.props.brand}</strong>
-					<p>{this.props.name}</p>
+					<strong>{brand}</strong>
+					<p>{name}</p>
 				</S.InfoText>
 
-				<S.WrapperAttributes>
-					<p>Size</p>
-					<div>sizes</div>
-				</S.WrapperAttributes>
-
-				<S.WrapperAttributes>
-					<p>Color</p>
-					<div>colors</div>
-				</S.WrapperAttributes>
+				<Attributes attributes={attributes} />
 
 				<S.WrapperAttributes>
 					<p>Price</p>
@@ -54,7 +49,7 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 					disabled={!this.props.inStock}
 				/>
 
-				<S.HtmlParser>{ReactHtmlParser(html)}</S.HtmlParser>
+				<S.HtmlParser>{html}</S.HtmlParser>
 			</S.ProductInfoContainer>
 		)
 	}

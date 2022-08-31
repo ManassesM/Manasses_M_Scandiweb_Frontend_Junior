@@ -5,7 +5,7 @@ const Scrollbar = styled.div`
 		width: 4px;
 	}
 	::-webkit-scrollbar-track {
-		background: #ffffff;
+		background: ${({ theme }) => theme.palette.white};
 	}
 	::-webkit-scrollbar-thumb {
 		border-radius: 6px;
