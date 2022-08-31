@@ -1,5 +1,4 @@
-import Currency from 'components/Currency'
-import MiniCart from 'components/MiniCart'
+import { Currency, MiniCart } from 'components/Actions'
 import { PureComponent } from 'react'
 
 import * as S from './style'

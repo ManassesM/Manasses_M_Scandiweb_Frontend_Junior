@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 
-
 export const CurrencyContainer = styled.div`
 	display: flex;
 	align-items: center;

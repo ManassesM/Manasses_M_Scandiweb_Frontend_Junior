@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartModalReducer from './features/cartModalSlice'
+import categoryReducer from './features/categorySlice'
 import currencyModalReducer from './features/currencyModalSlice'
 import currencyReducer from './features/currencySlice'
 
@@ -8,6 +9,7 @@ export const store = configureStore({
 		currency: currencyReducer,
 		cartModal: cartModalReducer,
 		currencyModal: currencyModalReducer,
+		category: categoryReducer,
 	},
 })
 

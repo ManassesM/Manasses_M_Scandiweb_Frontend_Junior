@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+    
 	}
 
 	html,
@@ -19,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 		background: ${theme.palette.white};
 		line-height: ${theme.typography.lineHeight};
 		height: 100%;
+    overflow: auto;
 	}
 
 	a {

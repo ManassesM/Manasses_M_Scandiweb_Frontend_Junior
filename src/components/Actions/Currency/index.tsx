@@ -33,7 +33,7 @@ export class Currency extends PureComponent<CurrencyProps> {
 		return (
 			<>
 				<S.CurrencyContainer onClick={handleToggleModal}>
-					<p>{this.props.currency.symbol}</p>
+					<p>{this.props.currency.symbol || ''}</p>
 					<Image
 						src={this.props.currencyModal.open ? arrowUp : arrowDown}
 						width={6}

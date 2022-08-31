@@ -15,3 +15,10 @@ export const HeaderContainer = styled.div`
 	height: 80px;
 	color: ${({ theme }) => theme.main};
 `
+
+export const WrapperHeader = styled.div`
+	position: fixed;
+	width: 100%;
+	background: ${({ theme }) => theme.palette.white};
+	top: 0;
+`

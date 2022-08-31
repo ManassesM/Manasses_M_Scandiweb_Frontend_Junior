@@ -7,6 +7,7 @@ import {
 import { PureComponent } from 'react'
 import { Query, QueryResult } from 'react-apollo'
 import { connect } from 'react-redux'
+import { toggleCurrencyModal } from 'redux/features/currencyModalSlice'
 import { changeCurrency } from 'redux/features/currencySlice'
 import { AppDispatch, RootState } from 'redux/store'
 
@@ -14,6 +15,7 @@ import * as S from './style'
 
 interface CurrencyItemsProps {
 	currency: CurrencyProps
+	toggleCurrencyModal: () => void
 	onChangeCurrency: (currency: CurrencyProps) => void
 }
 
@@ -21,6 +23,7 @@ export class CurrencyItems extends PureComponent<CurrencyItemsProps> {
 	render() {
 		const handleChangeCurrency = (currency: CurrencyProps) => {
 			this.props.onChangeCurrency(currency)
+			this.props.toggleCurrencyModal()
 		}
 
 		return (
@@ -56,6 +59,9 @@ const mapToDispatchProps = (dispatch: AppDispatch) => {
 	return {
 		onChangeCurrency: (currency: CurrencyProps) => {
 			dispatch(changeCurrency(currency))
+		},
+		toggleCurrencyModal: () => {
+			dispatch(toggleCurrencyModal())
 		},
 	}
 }
