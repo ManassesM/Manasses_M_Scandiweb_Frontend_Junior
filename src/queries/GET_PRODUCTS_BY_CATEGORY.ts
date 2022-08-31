@@ -8,6 +8,7 @@ export interface ProductProps {
 	gallery: string[]
 	inStock: boolean
 	prices: {
+    amount: number
 		currency: CurrencyProps
 	}[]
 }

@@ -6,6 +6,4 @@ export const Grid = styled.div`
 	column-gap: 40px;
 	row-gap: 100px;
 	margin-top: 100px;
-
-  border: 1px solid red;
 `

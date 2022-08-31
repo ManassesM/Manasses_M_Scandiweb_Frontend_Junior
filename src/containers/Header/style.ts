@@ -21,4 +21,5 @@ export const WrapperHeader = styled.div`
 	width: 100%;
 	background: ${({ theme }) => theme.palette.white};
 	top: 0;
+	z-index: 2;
 `

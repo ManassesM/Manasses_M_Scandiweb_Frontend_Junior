@@ -16,7 +16,7 @@ export const ModalContainer = styled.div<ModalContainerProps>`
 	width: ${(props) => `${props.width}px`};
 	height: ${(props) => `${props.height}px`};
 
-	background: rgba(255, 255, 255, 1);
+	background: ${({ theme }) => theme.palette.white};
 	z-index: 100;
 `
 
