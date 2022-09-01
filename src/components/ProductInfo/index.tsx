@@ -1,6 +1,6 @@
-import Attributes from 'containers/Attributes'
 import { Button } from 'components/Button'
 import { theme } from 'config/theme'
+import Attributes from 'containers/Attributes'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { ProductQueryProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { RootState } from 'redux/store'
 import { getProductPrice } from 'utils/GetProductPrice'
 
+import { Link } from 'react-router-dom'
 import * as S from './style'
 
 interface ProductInfoProps extends ProductQueryProps {
@@ -39,15 +40,17 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 					</S.PriceText>
 				</S.WrapperAttributes>
 
-				<Button
-					width={292}
-					height={52}
-					text='ADD TO CART'
-					bgColor={theme.palette.main}
-					txtColor={theme.palette.white}
-					contained
-					disabled={!this.props.inStock}
-				/>
+				<Link to='/cart'>
+					<Button
+						width={292}
+						height={52}
+						text='ADD TO CART'
+						bgColor={theme.palette.main}
+						txtColor={theme.palette.white}
+						contained
+						disabled={!this.props.inStock}
+					/>
+				</Link>
 
 				<S.HtmlParser>{html}</S.HtmlParser>
 			</S.ProductInfoContainer>

@@ -1,5 +1,6 @@
 import emptyCart from 'assets/icons/emptyCart.svg'
 import Modal from 'components/Modal'
+import MiniCartContainer from 'containers/MiniCart'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { CartModalProps, toggleCartModal } from 'redux/features/cartModalSlice'
@@ -39,7 +40,7 @@ export class MiniCart extends PureComponent<MiniCartProps> {
 					width={325}
 					height={677}
 				>
-					Mini Cart {/* TODO: get it from cart query */}
+					<MiniCartContainer />
 				</Modal>
 			</>
 		)

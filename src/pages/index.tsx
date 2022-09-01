@@ -1,4 +1,6 @@
+import Cart from './Cart'
+import NotFound from './NotFound'
 import Product from './product'
 import Products from './products'
 
-export { Product, Products }
+export { Cart, NotFound, Product, Products }

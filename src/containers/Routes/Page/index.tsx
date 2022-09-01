@@ -1,4 +1,5 @@
-import { Product, Products } from 'pages'
+import { Cart, NotFound, Product, Products } from 'pages'
+
 import { CategoryProps } from 'queries/GET_CATEGORIES'
 import { PureComponent } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -13,12 +14,11 @@ export class Page extends PureComponent<PageProps> {
 			<Routes>
 				<Route path='/' element={<Products />} />
 				{this.props.routes.map((category) => (
-					<>
-						<Route path={`/${category.name || '/'}`} element={<Products />} />
-						<Route path={`/products/:id`} element={<Product />} />
-					</>
+					<Route path={`/${category.name || '/'}`} element={<Products />} />
 				))}
-				<Route path='*' element='Not found' /> {/* TODO: Not found page */}
+				<Route path={`/products/:id`} element={<Product />} />
+				<Route path='/cart' element={<Cart />} />
+				<Route path='*' element={<NotFound />} />
 			</Routes>
 		)
 	}
