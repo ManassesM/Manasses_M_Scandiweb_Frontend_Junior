@@ -5,7 +5,9 @@ import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { RootState } from 'redux/store'
+import { Link } from 'react-router-dom'
+import { toggleCartModal } from 'redux/features/cartModalSlice'
+import { AppDispatch, RootState } from 'redux/store'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
 
@@ -13,6 +15,7 @@ import * as S from './style'
 
 interface MiniCartContainerProps {
 	currency: CurrencyProps
+	toggleCartModal: () => void
 }
 
 export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
@@ -42,21 +45,27 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 					</strong>
 				</S.Total>
 				<S.Buttons>
-					<Button
-						width={140}
-						height={43}
-						text='View Bag'
-						contained
-						borderColor={theme.palette.black}
-					/>
-					<Button
-						width={140}
-						height={43}
-						text='Check Out'
-						bgColor={theme.palette.main}
-						txtColor={theme.palette.white}
-						contained
-					/>
+					<Link to='/cart'>
+						<Button
+							width={140}
+							height={43}
+							text='View Bag'
+							contained
+							borderColor={theme.palette.black}
+							onClick={() => this.props.toggleCartModal()}
+						/>
+					</Link>
+					<Link to='/cart'>
+						<Button
+							width={140}
+							height={43}
+							text='Check Out'
+							bgColor={theme.palette.main}
+							txtColor={theme.palette.white}
+							contained
+							onClick={() => this.props.toggleCartModal()}
+						/>
+					</Link>
 				</S.Buttons>
 			</S.MiniCartContainer>
 		)
@@ -67,4 +76,12 @@ const mapStateToProps = (state: RootState) => ({
 	currency: state.currency,
 })
 
-export default connect(mapStateToProps)(MiniCartContainer)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+	return {
+		toggleCartModal: () => {
+			dispatch(toggleCartModal())
+		},
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MiniCartContainer)

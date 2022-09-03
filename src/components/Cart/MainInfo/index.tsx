@@ -1,10 +1,10 @@
-import Attributes from 'containers/Attributes'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { AttributeProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { RootState } from 'redux/store'
 import { getProductPrice } from 'utils/GetProductPrice'
+import Attributes from '../Attributes'
 
 import * as S from './style'
 

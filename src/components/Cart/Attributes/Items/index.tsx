@@ -1,38 +1,27 @@
 import { ItemProps, ProductAttributesTypes } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
-import BoxColor from '../../../components/Attributes/BoxColor'
-import BoxText from '../../../components/Attributes/BoxText'
+import BoxColor from '../../../Attributes/BoxColor'
+import BoxText from '../../../Attributes/BoxText'
+
+import * as S from './style'
 
 interface ItemsProps {
 	items: ItemProps[]
 	type: ProductAttributesTypes
-	isMinicart?: boolean
 }
 
 export class Items extends PureComponent<ItemsProps> {
 	render() {
 		return (
-			<div>
+			<S.ItemsContainer>
 				{this.props.items?.map((item) => {
 					if (this.props.type === 'text')
-						return (
-							<BoxText
-								key={item.id}
-								isMinicart={this.props.isMinicart}
-								{...item}
-							/>
-						)
+						return <BoxText key={item.id} {...item} />
 					if (this.props.type === 'swatch')
-						return (
-							<BoxColor
-								key={item.id}
-								isMinicart={this.props.isMinicart}
-								{...item}
-							/>
-						)
+						return <BoxColor key={item.id} {...item} />
 					return null
 				})}
-			</div>
+			</S.ItemsContainer>
 		)
 	}
 }

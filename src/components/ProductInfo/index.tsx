@@ -1,6 +1,6 @@
 import { Button } from 'components/Button'
 import { theme } from 'config/theme'
-import Attributes from 'containers/Attributes'
+import Attributes from 'components/Cart/Attributes'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { ProductQueryProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'

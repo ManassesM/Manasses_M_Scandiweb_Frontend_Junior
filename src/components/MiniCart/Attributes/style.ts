@@ -16,10 +16,4 @@ export const WrapperAttributes = styled.section<{ isMinicart?: boolean }>`
 		font-size: ${({ isMinicart }) => `${isMinicart ? '14' : '18'}px`};
 		text-transform: uppercase;
 	}
-
-	> div {
-		margin-top: 8px;
-		display: flex;
-		gap: 12px;
-	}
 `

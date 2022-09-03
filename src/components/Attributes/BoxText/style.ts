@@ -15,8 +15,7 @@ export const BoxTextContainer = styled.div<BoxTextContainerProps>`
 	align-items: center;
 	justify-content: center;
 
-	height: ${({ isMinicart }) => (isMinicart ? '24px' : '45px')};
-	width: auto;
+	height: ${({ isMinicart }) => `${isMinicart ? '2em' : '2.5em'}`};
 
 	cursor: pointer;
 
@@ -28,6 +27,6 @@ export const BoxTextContainer = styled.div<BoxTextContainerProps>`
 
 	p {
 		font-family: ${({ theme }) => theme.typography.fontFamily.SourceSansPro};
-		padding: 0 22px;
+		padding: ${({ isMinicart }) => (isMinicart ? '0.7em' : '1.5em')};
 	}
 `

@@ -13,7 +13,6 @@ export class MiniCart extends PureComponent<ProductQueryProps> {
 			<S.MiniCartContainer>
 				<S.WrapperMainInfo>
 					<MainInfo
-						isMiniCart
 						name={name}
 						brand={brand}
 						attributes={attributes}
