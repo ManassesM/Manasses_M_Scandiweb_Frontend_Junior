@@ -26,6 +26,7 @@ export const PriceText = styled.div`
 
 export const WrapperAttributes = styled.section`
 	margin: 40px 0;
+
 	> p {
 		font-family: ${({ theme }) => theme.typography.fontFamily.roboto};
 		font-weight: ${({ theme }) => theme.typography.fontWeigth.bold};

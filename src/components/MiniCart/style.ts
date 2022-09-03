@@ -1,12 +1,9 @@
 import styled from 'styled-components'
 
-export const MainInfo = styled.div``
-
 export const WrapperMainInfo = styled.div`
-	border: 1px solid pink;
 	display: flex;
-  justify-content: space-between;
-  overflow: hidden; /* TODO: */
+	justify-content: space-between;
+	max-width: 164px;
 `
 
 export const MiniCartContainer = styled.div`

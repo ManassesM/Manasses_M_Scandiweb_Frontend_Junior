@@ -1,9 +1,5 @@
 import styled from 'styled-components'
 
-export const Image = styled.div`
-	border: 1px solid purple;
-`
-
 export const Box = styled.div`
 	width: 45px;
 	height: 45px;

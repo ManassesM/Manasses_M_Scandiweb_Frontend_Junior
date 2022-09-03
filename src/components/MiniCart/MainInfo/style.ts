@@ -12,3 +12,7 @@ export const InfoText = styled.div`
 
 	font-weight: ${({ theme }) => theme.typography.fontWeigth.light};
 `
+
+export const MainInfoContent = styled.div`
+	max-width: 136px;
+`

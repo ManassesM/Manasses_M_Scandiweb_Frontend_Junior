@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CurrencyItem = styled.div<{ active: boolean }>`
 	display: flex;
-	background: ${({ active, theme }) => `${active && theme.palette.whiteHover}`};
+	background: ${({ active, theme }) => active && theme.palette.whiteHover};
 
 	span {
 		margin: 12px auto 8px 20px;
@@ -11,7 +11,7 @@ export const CurrencyItem = styled.div<{ active: boolean }>`
 	}
 
 	&:hover {
-		background-color: #eeeeee;
+		background: ${({ theme }) => theme.palette.whiteHover};
 		cursor: pointer;
 	}
 `

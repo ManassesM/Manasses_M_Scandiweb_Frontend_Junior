@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Box = styled.div<{ isMinicart?: boolean }>`
-	width: ${({ isMinicart }) => `${isMinicart ? '24' : '45'}px`};
-	height: ${({ isMinicart }) => `${isMinicart ? '24' : '45'}px`};
+	width: ${({ isMinicart }) => (isMinicart ? '24px' : '45px')};
+	height: ${({ isMinicart }) => (isMinicart ? '24px' : '45px')};
 
 	border: ${({ theme }) => `1px solid ${theme.palette.black}`};
 

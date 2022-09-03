@@ -23,7 +23,7 @@ export class MainInfo extends PureComponent<MainInfoProps> {
 		const price = getProductPrice({ currency, prices })
 
 		return (
-			<div>
+			<S.MainInfoContent>
 				<S.InfoText>
 					<p>{brand}</p>
 					<p>{name}</p>
@@ -35,7 +35,7 @@ export class MainInfo extends PureComponent<MainInfoProps> {
 				</S.PriceText>
 
 				<Attributes isMinicart={isMiniCart} attributes={attributes} />
-			</div>
+			</S.MainInfoContent>
 		)
 	}
 }

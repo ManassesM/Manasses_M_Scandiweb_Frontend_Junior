@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const WrapperAttributes = styled.section<{ isMinicart?: boolean }>`
-	margin: 40px 0;
+	margin-top: ${({ isMinicart }) => `${isMinicart ? '8' : '40'}px`};
 
 	> p {
 		font-family: ${({ theme }) => theme.typography.fontFamily.roboto};

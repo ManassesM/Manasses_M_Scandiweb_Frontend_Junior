@@ -21,7 +21,7 @@ export const WrapperMiniCart = styled(Scrollbar)`
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
-  overflow-x: hidden;
+	overflow-x: hidden;
 	overflow-y: auto;
 	max-height: 420px;
 `
@@ -32,5 +32,4 @@ export const MiniCartContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
-	border: 1px solid red;
 `

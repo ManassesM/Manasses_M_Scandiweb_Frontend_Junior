@@ -19,8 +19,8 @@ export const BoxColorContainer = styled.div<BoxColorContainerProps>`
 
 	background: ${({ bgColor }) => bgColor};
 
-	height: ${({ isMinicart }) => `${isMinicart ? '16' : '32'}px`};
-	width: ${({ isMinicart }) => `${isMinicart ? '16' : '32'}px`};
+	height: ${({ isMinicart }) => (isMinicart ? '16px' : '32px')};
+	width: ${({ isMinicart }) => (isMinicart ? '16px' : '32px')};
 
 	cursor: pointer;
 `
@@ -29,8 +29,9 @@ export const WrapperBoxColor = styled.div<WrapperBoxColorProps>`
 	position: relative;
 	border: ${({ active, theme }) => active && `1px solid ${theme.palette.main}`};
 
-	height: ${({ isMinicart }) => `${isMinicart ? '20' : '36'}px`};
-	width: ${({ isMinicart }) => `${isMinicart ? '20' : '36'}px`};
+	height: ${({ isMinicart }) => (isMinicart ? '20px' : '36px')};
+	width: ${({ isMinicart }) => (isMinicart ? '20px' : '36px')};
+
 	&:hover {
 		border: ${({ theme }) => `1px solid ${theme.palette.main}`};
 	}

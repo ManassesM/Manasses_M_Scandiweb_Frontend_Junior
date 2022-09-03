@@ -9,7 +9,7 @@ export const ContainerNotFound = styled.div`
 	height: 60vh;
 
 	h3 {
-		color: #5ece7b;
+		color: ${({ theme }) => theme.palette.main};
 		font-weight: 700;
 		padding: 2em;
 	}
@@ -26,7 +26,7 @@ export const ContainerNotFound = styled.div`
 		span {
 			transition: color 0.1s ease-in-out;
 			&:hover {
-				color: #5ece7b;
+				color: ${({ theme }) => theme.palette.main};
 			}
 		}
 	}

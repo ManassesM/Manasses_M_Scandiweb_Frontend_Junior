@@ -22,8 +22,8 @@ export const ButtonStyle = styled.button<ButtonStyleProps>`
 
 	transition: all 0.2s ease-in-out;
 
-	opacity: ${({ disabled }) => `${disabled ? '0.5' : '1'}`};
-	cursor: ${({ disabled }) => `${disabled ? 'not-allowed' : 'pointer'}`};
+	opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
+	cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
 	&:hover:not(:disabled) {
 		filter: brightness(1.1);

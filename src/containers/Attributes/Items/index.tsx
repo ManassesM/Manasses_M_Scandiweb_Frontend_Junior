@@ -1,9 +1,7 @@
 import { ItemProps, ProductAttributesTypes } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
-import BoxColor from '../BoxColor'
-import BoxText from '../BoxText'
-
-import * as S from './style'
+import BoxColor from '../../../components/Attributes/BoxColor'
+import BoxText from '../../../components/Attributes/BoxText'
 
 interface ItemsProps {
 	items: ItemProps[]
@@ -14,7 +12,7 @@ interface ItemsProps {
 export class Items extends PureComponent<ItemsProps> {
 	render() {
 		return (
-			<S.Grid>
+			<div>
 				{this.props.items?.map((item) => {
 					if (this.props.type === 'text')
 						return (
@@ -34,7 +32,7 @@ export class Items extends PureComponent<ItemsProps> {
 						)
 					return null
 				})}
-			</S.Grid>
+			</div>
 		)
 	}
 }

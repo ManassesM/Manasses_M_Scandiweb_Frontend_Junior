@@ -1,4 +1,4 @@
-import Items from 'components/Attributes/Items'
+import Items from 'containers/Attributes/Items'
 import { AttributeProps as IAttribute } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 
