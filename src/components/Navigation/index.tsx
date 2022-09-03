@@ -27,8 +27,9 @@ export class Navigation extends PureComponent<NavigationProps> {
 
 					return (
 						<S.NavigationContainer>
-							{data?.categories.map(({ name }) => (
+							{data?.categories?.map(({ name }) => (
 								<NavLink
+									key={name}
 									to={name === 'all' ? '/' : name}
 									style={NavLinkStyles}
 									onClick={() => handleCategory(name)}

@@ -9,6 +9,7 @@ import {
 } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { Query, QueryResult } from 'react-apollo'
+import { getFromLocalStorage, setToLocalStorage } from 'utils/LocalStorage'
 
 import * as S from './style'
 
@@ -32,6 +33,11 @@ export class ProductContainer extends PureComponent<
 
 		const handleCurrentImg = (img: string) => this.setState({ currentImg: img })
 
+		const handleAddToCart = (data: QRProduct | undefined) => {
+			const cart = getFromLocalStorage('cart')
+			setToLocalStorage('cart', [...cart, data])
+		}
+
 		return (
 			<Query query={GET_PRODUCT_BY_ID} variables={{ id }}>
 				{({ data, loading }: QueryResult<QRProduct>) => {
@@ -50,7 +56,10 @@ export class ProductContainer extends PureComponent<
 								height={511}
 								cursor='default'
 							/>
-							<ProductInfo {...(data?.product as ProductQueryProps)} />
+							<ProductInfo
+								{...(data?.product as ProductQueryProps)}
+								onClick={() => handleAddToCart(data)}
+							/>
 						</S.ProductGrid>
 					)
 				}}

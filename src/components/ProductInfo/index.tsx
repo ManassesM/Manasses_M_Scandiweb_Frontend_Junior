@@ -14,6 +14,7 @@ import * as S from './style'
 
 interface ProductInfoProps extends ProductQueryProps {
 	currency: CurrencyProps
+  onClick: () => void
 }
 
 export class ProductInfo extends PureComponent<ProductInfoProps> {
@@ -23,7 +24,6 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 		const price = getProductPrice({ currency, prices })
 		const html = ReactHtmlParser(this.props.description || '')
 
-		console.log(attributes)
 		return (
 			<S.ProductInfoContainer>
 				<S.InfoText>
@@ -49,6 +49,7 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 						txtColor={theme.palette.white}
 						contained
 						disabled={!this.props.inStock}
+            onClick={this.props.onClick}
 					/>
 				</Link>
 

@@ -13,8 +13,9 @@ export class Gallery extends PureComponent<GalleryProps> {
 	render() {
 		return (
 			<S.Gallery>
-				{this.props.images.map((img) => (
+				{this.props.images?.map((img) => (
 					<Image
+						key={img}
 						cursor={this.props.currentImage !== img ? 'pointer' : 'default'}
 						src={img}
 						width={80}

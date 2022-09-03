@@ -1,15 +1,21 @@
 import styled from 'styled-components'
 
-export const BoxTextContainer = styled.div<{ active: boolean }>`
+interface BoxTextContainerProps {
+	active: boolean
+	isMinicart: boolean
+}
+
+export const BoxTextContainer = styled.div<BoxTextContainerProps>`
 	border: ${({ theme }) => `1px solid ${theme.palette.black}`};
 	background: ${({ active, theme }) => active && theme.palette.black};
 	color: ${({ active, theme }) => active && theme.palette.white};
+	font-size: ${({ isMinicart }) => `${isMinicart ? '14' : '16'}px`};
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
-	height: 45px;
+	height: ${({ isMinicart }) => `${isMinicart ? '24' : '45'}px`};
 	width: auto;
 
 	cursor: pointer;

@@ -3,10 +3,16 @@ import { PureComponent } from 'react'
 
 import * as S from './style'
 
-export class BoxText extends PureComponent<ItemProps> {
+interface BoxTextProps extends ItemProps {
+	isMinicart?: boolean
+}
+export class BoxText extends PureComponent<BoxTextProps> {
 	render() {
 		return (
-			<S.BoxTextContainer active={false}>
+			<S.BoxTextContainer
+				active={false}
+				isMinicart={this.props.isMinicart || false}
+			>
 				<p>{this.props.value}</p>
 			</S.BoxTextContainer>
 		)

@@ -6,19 +6,16 @@ interface ButtonStyleProps {
 	txtColor: string
 	width: number
 	height: number
-	disabled: boolean
+	borderColor?: string
 }
 
 export const ButtonStyle = styled.button<ButtonStyleProps>`
 	background: ${({ contained, bgColor }) => `${contained && bgColor}`};
 	color: ${({ txtColor }) => `${txtColor}`};
-
-	border: ${({ bgColor }) => `1px solid ${bgColor}`};
+	border: ${({ borderColor, bgColor }) =>
+		`1px solid ${borderColor ?? bgColor}`};
 
 	text-transform: uppercase;
-
-	width: 100%;
-	padding: 13px 100px;
 
 	width: ${({ width }) => `${width}px`};
 	height: ${({ height }) => `${height}px`};
@@ -28,7 +25,7 @@ export const ButtonStyle = styled.button<ButtonStyleProps>`
 	opacity: ${({ disabled }) => `${disabled ? '0.5' : '1'}`};
 	cursor: ${({ disabled }) => `${disabled ? 'not-allowed' : 'pointer'}`};
 
-	&:hover {
+	&:hover:not(:disabled) {
 		filter: brightness(1.1);
 	}
 `

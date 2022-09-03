@@ -1,4 +1,4 @@
-export function getFromLocalStorage(itemName: string): string | undefined {
+export function getFromLocalStorage(itemName: string): any | undefined {
 	const localItem = localStorage.getItem(itemName)
 	if (!localItem) return
 	return JSON.parse(localItem)

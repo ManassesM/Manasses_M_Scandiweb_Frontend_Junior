@@ -3,11 +3,19 @@ import { PureComponent } from 'react'
 
 import * as S from './style'
 
-export class BoxColor extends PureComponent<ItemProps> {
+interface BoxColorProps extends ItemProps {
+	isMinicart?: boolean
+}
+
+export class BoxColor extends PureComponent<BoxColorProps> {
 	render() {
 		return (
-			<S.WrapperBoxColor active={false}>
-				<S.BoxColorContainer active={true} bgColor={this.props.value} />
+			<S.WrapperBoxColor active={false} isMinicart={this.props.isMinicart}>
+				<S.BoxColorContainer
+					active={true}
+					bgColor={this.props.value}
+					isMinicart={this.props.isMinicart}
+				/>
 			</S.WrapperBoxColor>
 		)
 	}

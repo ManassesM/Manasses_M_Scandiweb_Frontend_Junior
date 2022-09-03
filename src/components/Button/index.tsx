@@ -12,6 +12,7 @@ interface ButtonProps {
 	height?: number
 	onClick?: () => void
 	disabled?: boolean
+	borderColor?: string
 }
 
 export class Button extends PureComponent<ButtonProps> {
@@ -22,6 +23,7 @@ export class Button extends PureComponent<ButtonProps> {
 				height={this.props.height || 50}
 				bgColor={this.props.bgColor || theme.palette.white}
 				txtColor={this.props.txtColor || theme.palette.black}
+				borderColor={this.props.borderColor}
 				contained={this.props.contained || false}
 				onClick={this.props.onClick}
 				disabled={this.props.disabled || false}

@@ -35,6 +35,7 @@ export class CurrencyItems extends PureComponent<CurrencyItemsProps> {
 						<>
 							{data?.currencies.map((currency) => (
 								<S.CurrencyItem
+									key={currency.label}
 									active={this.props.currency.label === currency.label}
 									onClick={() => handleChangeCurrency(currency)}
 								>

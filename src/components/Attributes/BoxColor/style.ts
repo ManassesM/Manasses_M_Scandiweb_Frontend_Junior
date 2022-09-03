@@ -3,6 +3,12 @@ import styled from 'styled-components'
 interface BoxColorContainerProps {
 	active: boolean
 	bgColor: string
+	isMinicart?: boolean
+}
+
+interface WrapperBoxColorProps {
+	active: boolean
+	isMinicart?: boolean
 }
 
 export const BoxColorContainer = styled.div<BoxColorContainerProps>`
@@ -13,17 +19,18 @@ export const BoxColorContainer = styled.div<BoxColorContainerProps>`
 
 	background: ${({ bgColor }) => bgColor};
 
-	height: 32px;
-	width: 32px;
+	height: ${({ isMinicart }) => `${isMinicart ? '16' : '32'}px`};
+	width: ${({ isMinicart }) => `${isMinicart ? '16' : '32'}px`};
 
 	cursor: pointer;
 `
 
-export const WrapperBoxColor = styled.div<{ active: boolean }>`
+export const WrapperBoxColor = styled.div<WrapperBoxColorProps>`
 	position: relative;
 	border: ${({ active, theme }) => active && `1px solid ${theme.palette.main}`};
-	height: 36px;
-	width: 36px;
+
+	height: ${({ isMinicart }) => `${isMinicart ? '20' : '36'}px`};
+	width: ${({ isMinicart }) => `${isMinicart ? '20' : '36'}px`};
 	&:hover {
 		border: ${({ theme }) => `1px solid ${theme.palette.main}`};
 	}
