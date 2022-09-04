@@ -37,6 +37,7 @@ export interface QRProduct {
 export const GET_PRODUCT_BY_ID = gql`
 	query Product($id: String!) {
 		product(id: $id) {
+			id
 			name
 			brand
 			description

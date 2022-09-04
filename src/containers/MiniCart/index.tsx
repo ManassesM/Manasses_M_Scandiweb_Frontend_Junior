@@ -2,12 +2,12 @@ import { Button } from 'components/Button'
 import MiniCart from 'components/MiniCart'
 import { theme } from 'config/theme'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
-import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toggleCartModal } from 'redux/features/cartModalSlice'
 import { AppDispatch, RootState } from 'redux/store'
+import { CartObjectProps } from 'utils/CartObject'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
 
@@ -20,7 +20,7 @@ interface MiniCartContainerProps {
 
 export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 	render() {
-		const cartProducts: QRProduct[] = getFromLocalStorage('cart')
+		const cartProducts: CartObjectProps[] = getFromLocalStorage('cart')
 		const { currency } = this.props
 		const totalPrice = getTotalPrice(cartProducts, currency)
 
@@ -34,7 +34,7 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 				</div>
 				<S.WrapperMiniCart>
 					{cartProducts?.map(({ product }) => (
-						<MiniCart {...product} key={product.id} />
+						<MiniCart key={product.product.id} {...product.product} />
 					))}
 				</S.WrapperMiniCart>
 				<S.Total>
@@ -55,7 +55,7 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 							onClick={() => this.props.toggleCartModal()}
 						/>
 					</Link>
-					<Link to='/cart'>
+					<Link to='/'>
 						<Button
 							width={140}
 							height={43}

@@ -9,6 +9,10 @@ import {
 } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { Query, QueryResult } from 'react-apollo'
+import { connect } from 'react-redux'
+import { DefaultProps } from 'redux/features/defaultPropsSlice'
+import { RootState } from 'redux/store'
+import { cartObject } from 'utils/CartObject'
 import { getFromLocalStorage, setToLocalStorage } from 'utils/LocalStorage'
 
 import * as S from './style'
@@ -17,8 +21,12 @@ interface ProductContainerStateProps {
 	currentImg: string
 }
 
+interface ProductContainerProps {
+	defaultProps: DefaultProps
+}
+
 export class ProductContainer extends PureComponent<
-	{},
+	ProductContainerProps,
 	ProductContainerStateProps
 > {
 	constructor(props: any) {
@@ -33,9 +41,13 @@ export class ProductContainer extends PureComponent<
 
 		const handleCurrentImg = (img: string) => this.setState({ currentImg: img })
 
-		const handleAddToCart = (data: QRProduct | undefined) => {
+		const handleAddToCart = (product: QRProduct) => {
 			const cart = getFromLocalStorage('cart')
-			setToLocalStorage('cart', [...cart, data])
+			const updatedData = cartObject({
+				product,
+				defaultProps: this.props.defaultProps.data,
+			})
+			setToLocalStorage('cart', [...(cart || []), updatedData])
 		}
 
 		return (
@@ -58,7 +70,7 @@ export class ProductContainer extends PureComponent<
 							/>
 							<ProductInfo
 								{...(data?.product as ProductQueryProps)}
-								onClick={() => handleAddToCart(data)}
+								onClick={() => data && handleAddToCart(data)}
 							/>
 						</S.ProductGrid>
 					)
@@ -68,4 +80,8 @@ export class ProductContainer extends PureComponent<
 	}
 }
 
-export default ProductContainer
+const mapStateToProps = (state: RootState) => ({
+	defaultProps: state.defaultProps,
+})
+
+export default connect(mapStateToProps)(ProductContainer)

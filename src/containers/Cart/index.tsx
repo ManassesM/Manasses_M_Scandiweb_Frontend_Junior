@@ -2,10 +2,10 @@ import { Button } from 'components/Button'
 import Cart from 'components/Cart'
 import { theme } from 'config/theme'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
-import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { RootState } from 'redux/store'
+import { CartObjectProps } from 'utils/CartObject'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
 
@@ -17,9 +17,10 @@ interface CartContainerProps {
 
 export class CartContainer extends PureComponent<CartContainerProps> {
 	render() {
-		const cartProducts: QRProduct[] = getFromLocalStorage('cart')
+		const cartProducts: CartObjectProps[] = getFromLocalStorage('cart')
+		// console.log(cartProducts)
 		const { currency } = this.props
-		let totalPrice = getTotalPrice(cartProducts, currency)
+		let totalPrice = getTotalPrice(cartProducts, currency) || 0
 		const taxes = Number((totalPrice * 0.21).toFixed(2))
 
 		return (
@@ -27,9 +28,9 @@ export class CartContainer extends PureComponent<CartContainerProps> {
 				<p>CART</p>
 
 				<S.CartItems>
-					{cartProducts?.map(({ product }) => (
-						<Cart {...product} key={product.id} />
-					))}
+					{cartProducts?.map(({ product }) => {
+						return <Cart key={product.product.id} {...product.product} />
+					})}
 				</S.CartItems>
 
 				<S.CartTotal>
@@ -48,7 +49,7 @@ export class CartContainer extends PureComponent<CartContainerProps> {
 						<p>Total:</p>
 						<strong>
 							{currency.symbol}
-							{totalPrice + taxes}
+							{(totalPrice + taxes).toFixed(2)}
 						</strong>
 					</S.InfoText>
 				</S.CartTotal>

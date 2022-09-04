@@ -10,6 +10,7 @@ import {
 	toggleCurrencyModal,
 } from 'redux/features/currencyModalSlice'
 import { AppDispatch, RootState } from 'redux/store'
+import { CartObjectProps } from 'utils/CartObject'
 import { getFromLocalStorage } from 'utils/LocalStorage'
 
 import * as S from './style'
@@ -23,8 +24,8 @@ interface MiniCartProps {
 
 export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
-    const cartProducts: QRProduct[] = getFromLocalStorage('cart')
-		const amount = cartProducts?.length 
+		const cartProducts: CartObjectProps[] = getFromLocalStorage('cart')
+		const amount = cartProducts?.length
 
 		const handleToggleModal = () => {
 			if (this.props.currencyModal.open) this.props.toggleCurrencyModal()

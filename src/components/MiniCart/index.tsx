@@ -8,11 +8,12 @@ import * as S from './style'
 
 export class MiniCart extends PureComponent<ProductQueryProps> {
 	render() {
-		const { name, brand, attributes, prices } = this.props
+		const { id, name, brand, attributes, prices } = this.props
 		return (
 			<S.MiniCartContainer>
 				<S.WrapperMainInfo>
 					<MainInfo
+						id={id}
 						name={name}
 						brand={brand}
 						attributes={attributes}

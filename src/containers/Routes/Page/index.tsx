@@ -14,7 +14,11 @@ export class Page extends PureComponent<PageProps> {
 			<Routes>
 				<Route path='/' element={<Products />} />
 				{this.props.routes.map((category) => (
-					<Route path={`/${category.name || '/'}`} element={<Products />} />
+					<Route
+						key={category.name}
+						path={`/${category.name || '/'}`}
+						element={<Products />}
+					/>
 				))}
 				<Route path={`/products/:id`} element={<Product />} />
 				<Route path='/cart' element={<Cart />} />

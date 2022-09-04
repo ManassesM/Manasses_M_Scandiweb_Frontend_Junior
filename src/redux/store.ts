@@ -3,6 +3,7 @@ import cartModalReducer from './features/cartModalSlice'
 import categoryReducer from './features/categorySlice'
 import currencyModalReducer from './features/currencyModalSlice'
 import currencyReducer from './features/currencySlice'
+import defaultPropsReducer from './features/defaultPropsSlice'
 
 export const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
 		cartModal: cartModalReducer,
 		currencyModal: currencyModalReducer,
 		category: categoryReducer,
+		defaultProps: defaultPropsReducer,
 	},
 })
 

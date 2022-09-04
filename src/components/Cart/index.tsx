@@ -1,8 +1,8 @@
 import { ProductQueryProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 
-import MainInfo from './MainInfo'
 import ProductAmount from '../ProductAmount'
+import MainInfo from './MainInfo'
 import ProductImage from './ProductImage'
 import * as S from './style'
 
@@ -12,6 +12,7 @@ export class Cart extends PureComponent<ProductQueryProps> {
 			<S.CartContainer>
 				<S.MainInfoContainer>
 					<MainInfo
+						id={this.props.id}
 						attributes={this.props.attributes}
 						brand={this.props.brand}
 						name={this.props.name}

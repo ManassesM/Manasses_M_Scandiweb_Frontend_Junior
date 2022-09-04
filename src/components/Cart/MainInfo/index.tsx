@@ -3,12 +3,14 @@ import { AttributeProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { RootState } from 'redux/store'
+import { getDefaultAttributes } from 'utils/GetDefaultAttributes'
 import { getProductPrice } from 'utils/GetProductPrice'
 import Attributes from '../Attributes'
 
 import * as S from './style'
 
 interface MainInfoProps {
+	id: string
 	attributes: AttributeProps[]
 	brand: string
 	name: string
@@ -18,8 +20,9 @@ interface MainInfoProps {
 
 export class MainInfo extends PureComponent<MainInfoProps> {
 	render() {
-		const { currency, name, brand, attributes, prices } = this.props
+		const { id, currency, name, brand, attributes, prices } = this.props
 		const price = getProductPrice({ currency, prices })
+		const defaultAttributes = getDefaultAttributes(id)
 
 		return (
 			<div>
@@ -33,7 +36,10 @@ export class MainInfo extends PureComponent<MainInfoProps> {
 					{price?.amount}
 				</S.PriceText>
 
-				<Attributes attributes={attributes} />
+				<Attributes
+					attributes={attributes}
+					defaultAttributes={defaultAttributes}
+				/>
 			</div>
 		)
 	}

@@ -1,6 +1,5 @@
 import { Button } from 'components/Button'
 import { theme } from 'config/theme'
-import Attributes from 'components/Cart/Attributes'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { ProductQueryProps } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
@@ -10,11 +9,12 @@ import { RootState } from 'redux/store'
 import { getProductPrice } from 'utils/GetProductPrice'
 
 import { Link } from 'react-router-dom'
+import Attributes from './Attributes'
 import * as S from './style'
 
 interface ProductInfoProps extends ProductQueryProps {
 	currency: CurrencyProps
-  onClick: () => void
+	onClick: () => void
 }
 
 export class ProductInfo extends PureComponent<ProductInfoProps> {
@@ -49,7 +49,7 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 						txtColor={theme.palette.white}
 						contained
 						disabled={!this.props.inStock}
-            onClick={this.props.onClick}
+						onClick={this.props.onClick}
 					/>
 				</Link>
 
