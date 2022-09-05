@@ -7,14 +7,24 @@ import * as S from './style'
 
 interface ProductAmountProps {
 	isMiniCart?: boolean
-	itemAmount?: number
+	itemAmount: number
+	onClickIncrement: () => void
+	onClickDecrement: () => void
 }
 
 export class ProductAmount extends PureComponent<ProductAmountProps> {
 	render() {
+		const handleClick = (type: 'increment' | 'decrement') => {
+			if (type === 'increment') return this.props.onClickIncrement()
+			if (this.props.itemAmount > 0) this.props.onClickDecrement()
+		}
+
 		return (
 			<S.ProductAmount>
-				<S.Box isMinicart={this.props?.isMiniCart}>
+				<S.Box
+					isMinicart={this.props?.isMiniCart}
+					onClick={() => handleClick('increment')}
+				>
 					<Image
 						src={plus}
 						width={this.props?.isMiniCart ? 8 : 15}
@@ -22,7 +32,10 @@ export class ProductAmount extends PureComponent<ProductAmountProps> {
 					/>
 				</S.Box>
 				<p>{this.props.itemAmount}</p>
-				<S.Box isMinicart={this.props?.isMiniCart}>
+				<S.Box
+					isMinicart={this.props?.isMiniCart}
+					onClick={() => handleClick('decrement')}
+				>
 					<Image
 						src={minus}
 						width={this.props?.isMiniCart ? 8 : 15}

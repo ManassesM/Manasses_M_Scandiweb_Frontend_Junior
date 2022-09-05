@@ -12,11 +12,14 @@ const cartAmountSlice = createSlice({
 	name: 'cartAmount',
 	initialState,
 	reducers: {
-		updateAmount(state) {
+		incrementAmount(state) {
 			state.amount = state.amount + 1
+		},
+		decrementAmount(state) {
+			state.amount = state.amount - 1
 		},
 	},
 })
 
-export const { updateAmount } = cartAmountSlice.actions
+export const { incrementAmount, decrementAmount } = cartAmountSlice.actions
 export default cartAmountSlice.reducer

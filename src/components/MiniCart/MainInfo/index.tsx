@@ -10,7 +10,7 @@ import Attributes from '../Attributes'
 import * as S from './style'
 
 interface MainInfoProps {
-	id: string
+	shortId: string
 	attributes: AttributeProps[]
 	brand: string
 	name: string
@@ -20,9 +20,9 @@ interface MainInfoProps {
 
 export class MainInfo extends PureComponent<MainInfoProps> {
 	render() {
-		const { id, currency, name, brand, attributes, prices } = this.props
+		const { shortId, currency, name, brand, attributes, prices } = this.props
 		const price = getProductPrice({ currency, prices })
-		const defaultAttributes = getDefaultAttributes(id)
+		const defaultAttributes = getDefaultAttributes(shortId)
 
 		return (
 			<S.MainInfoContent>

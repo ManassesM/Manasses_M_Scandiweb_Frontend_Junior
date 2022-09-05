@@ -1,5 +1,15 @@
 import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
+import shortid from 'shortid'
+
+export interface ProductProps extends QRProduct {
+	shortId: string
+}
+
+export interface ReturnCartObjectProps {
+	product: ProductProps
+	defaultProps?: DefaultPropsObject[]
+}
 
 export interface CartObjectProps {
 	product: QRProduct
@@ -8,9 +18,17 @@ export interface CartObjectProps {
 
 export function cartObject({ product, defaultProps }: CartObjectProps) {
 	const updatedObject = {
-		product,
+		product: {
+			...product,
+			shortId: shortid.generate(),
+		},
 		defaultProps,
-	} as CartObjectProps
+	} as ReturnCartObjectProps
+
+	// const updatedObject = {
+	// 	product,
+	// 	defaultProps,
+	// } as CartObjectProps
 
 	return updatedObject
 }

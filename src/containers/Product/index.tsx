@@ -10,10 +10,10 @@ import {
 import { PureComponent } from 'react'
 import { Query, QueryResult } from 'react-apollo'
 import { connect } from 'react-redux'
+import { incrementAmount } from 'redux/features/cartAmountSlice'
 import { DefaultProps } from 'redux/features/defaultPropsSlice'
-import { RootState } from 'redux/store'
-import { cartObject } from 'utils/CartObject'
-import { getFromLocalStorage, setToLocalStorage } from 'utils/LocalStorage'
+import { AppDispatch, RootState } from 'redux/store'
+import { addToCart } from 'utils/AddToCart'
 
 import * as S from './style'
 
@@ -23,6 +23,7 @@ interface ProductContainerStateProps {
 
 interface ProductContainerProps {
 	defaultProps: DefaultProps
+	incrementAmount: () => void
 }
 
 export class ProductContainer extends PureComponent<
@@ -42,12 +43,8 @@ export class ProductContainer extends PureComponent<
 		const handleCurrentImg = (img: string) => this.setState({ currentImg: img })
 
 		const handleAddToCart = (product: QRProduct) => {
-			const cart = getFromLocalStorage('cart')
-			const updatedData = cartObject({
-				product,
-				defaultProps: this.props.defaultProps.data,
-			})
-			setToLocalStorage('cart', [...(cart || []), updatedData])
+			addToCart({ product, defaultProps: this.props.defaultProps.data || [] })
+			this.props.incrementAmount()
 		}
 
 		return (
@@ -84,4 +81,12 @@ const mapStateToProps = (state: RootState) => ({
 	defaultProps: state.defaultProps,
 })
 
-export default connect(mapStateToProps)(ProductContainer)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+	return {
+		incrementAmount: () => {
+			dispatch(incrementAmount())
+		},
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductContainer)
