@@ -19,7 +19,7 @@ interface ProductInfoProps extends ProductQueryProps {
 
 export class ProductInfo extends PureComponent<ProductInfoProps> {
 	render() {
-		const { currency, prices, attributes, brand, name } = this.props
+		const { inStock, currency, prices, attributes, brand, name } = this.props
 
 		const price = getProductPrice({ currency, prices })
 		const html = ReactHtmlParser(this.props.description || '')
@@ -44,7 +44,7 @@ export class ProductInfo extends PureComponent<ProductInfoProps> {
 					<Button
 						width={292}
 						height={52}
-						text='ADD TO CART'
+						text={inStock ? 'ADD TO CART' : 'OUT OF STOCK'}
 						bgColor={theme.palette.main}
 						txtColor={theme.palette.white}
 						contained

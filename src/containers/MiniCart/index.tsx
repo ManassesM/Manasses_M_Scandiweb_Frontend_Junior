@@ -34,7 +34,11 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 				</div>
 				<S.WrapperMiniCart>
 					{cartProducts?.map(({ product }) => (
-						<MiniCart key={product.product.id} {...product.product} />
+						<MiniCart
+							key={product.product.id}
+							{...product.product}
+							itemAmount={1}
+						/>
 					))}
 				</S.WrapperMiniCart>
 				<S.Total>

@@ -2,8 +2,7 @@ import Items from 'components/Cart/Attributes/Items'
 import { AttributeProps as IAttribute } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
-
-import * as S from './style'
+import { WrapperAttributesStyle } from 'styles/attributes'
 
 interface AttributesProps {
 	attributes: IAttribute[]
@@ -17,7 +16,7 @@ export class Attributes extends PureComponent<AttributesProps> {
 		return (
 			<>
 				{this.props.attributes?.map((attribute) => (
-					<S.WrapperAttributes key={attribute.id}>
+					<WrapperAttributesStyle key={attribute.id}>
 						<p>{attribute.name}</p>
 						<Items
 							id={attribute.id}
@@ -25,7 +24,7 @@ export class Attributes extends PureComponent<AttributesProps> {
 							items={attribute.items}
 							defaultAttributes={defaultAttributes}
 						/>
-					</S.WrapperAttributes>
+					</WrapperAttributesStyle>
 				))}
 			</>
 		)

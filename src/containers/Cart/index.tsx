@@ -4,7 +4,8 @@ import { theme } from 'config/theme'
 import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { RootState } from 'redux/store'
+import { updateAmount } from 'redux/features/cartAmountSlice'
+import { AppDispatch, RootState } from 'redux/store'
 import { CartObjectProps } from 'utils/CartObject'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
@@ -13,12 +14,13 @@ import * as S from './style'
 
 interface CartContainerProps {
 	currency: CurrencyProps
+	updateAmount: () => void
 }
 
 export class CartContainer extends PureComponent<CartContainerProps> {
 	render() {
 		const cartProducts: CartObjectProps[] = getFromLocalStorage('cart')
-		// console.log(cartProducts)
+
 		const { currency } = this.props
 		let totalPrice = getTotalPrice(cartProducts, currency) || 0
 		const taxes = Number((totalPrice * 0.21).toFixed(2))
@@ -28,8 +30,8 @@ export class CartContainer extends PureComponent<CartContainerProps> {
 				<p>CART</p>
 
 				<S.CartItems>
-					{cartProducts?.map(({ product }) => {
-						return <Cart key={product.product.id} {...product.product} />
+					{cartProducts?.map(({ product }, idx) => {
+						return <Cart key={idx} {...product.product} itemAmount={1} />
 					})}
 				</S.CartItems>
 
@@ -73,4 +75,12 @@ const mapStateToProps = (state: RootState) => ({
 	currency: state.currency,
 })
 
-export default connect(mapStateToProps)(CartContainer)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+	return {
+		updateAmount: () => {
+			dispatch(updateAmount())
+		},
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer)

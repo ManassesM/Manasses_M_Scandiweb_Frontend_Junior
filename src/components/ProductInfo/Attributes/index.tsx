@@ -8,9 +8,8 @@ import {
 	updateDefaultProps,
 } from 'redux/features/defaultPropsSlice'
 import { AppDispatch, RootState } from 'redux/store'
+import { WrapperAttributesStyle } from 'styles/attributes'
 import { configDefaultProps } from 'utils/DefaultProps'
-
-import * as S from './style'
 
 interface AttributesProps {
 	attributes: IAttribute[]
@@ -19,6 +18,8 @@ interface AttributesProps {
 }
 
 export class Attributes extends PureComponent<AttributesProps> {
+	componentDidMount = () => this.props.changeDefaultProps({})
+
 	render() {
 		let defaultProps = this.props.defaultProps.data || []
 
@@ -34,7 +35,7 @@ export class Attributes extends PureComponent<AttributesProps> {
 		return (
 			<>
 				{this.props.attributes?.map((attribute) => (
-					<S.WrapperAttributes key={attribute.id}>
+					<WrapperAttributesStyle key={attribute.id}>
 						<p>{attribute.name}</p>
 						<Items
 							id={attribute.id}
@@ -43,7 +44,7 @@ export class Attributes extends PureComponent<AttributesProps> {
 							onClick={onClick}
 							defaultAttributes={defaultProps}
 						/>
-					</S.WrapperAttributes>
+					</WrapperAttributesStyle>
 				))}
 			</>
 		)

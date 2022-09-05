@@ -6,7 +6,11 @@ import MainInfo from './MainInfo'
 
 import * as S from './style'
 
-export class MiniCart extends PureComponent<ProductQueryProps> {
+interface MiniCartProps extends ProductQueryProps {
+	itemAmount?: number
+}
+
+export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
 		const { id, name, brand, attributes, prices } = this.props
 		return (
@@ -19,7 +23,7 @@ export class MiniCart extends PureComponent<ProductQueryProps> {
 						attributes={attributes}
 						prices={prices}
 					/>
-					<ProductAmount isMiniCart />
+					<ProductAmount isMiniCart itemAmount={this.props.itemAmount || 0} />
 				</S.WrapperMainInfo>
 				<Image
 					src={this.props.gallery[0]}

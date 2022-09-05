@@ -1,11 +1,10 @@
 import { ItemProps, ProductAttributesTypes } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
+import { ItemsContainerStyle } from 'styles/attributes'
 import { activeProp } from 'utils/ActiveProp'
 import BoxColor from '../../../Attributes/BoxColor'
 import BoxText from '../../../Attributes/BoxText'
-
-import * as S from './style'
 
 interface ItemsProps {
 	id: string
@@ -30,7 +29,7 @@ export class Items extends PureComponent<ItemsProps> {
 			})
 
 		return (
-			<S.ItemsContainer>
+			<ItemsContainerStyle>
 				{this.props.items?.map((item) => {
 					if (this.props.type === 'text')
 						return (
@@ -46,7 +45,7 @@ export class Items extends PureComponent<ItemsProps> {
 						)
 					return null
 				})}
-			</S.ItemsContainer>
+			</ItemsContainerStyle>
 		)
 	}
 }

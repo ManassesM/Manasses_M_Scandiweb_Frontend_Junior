@@ -4,9 +4,14 @@ import { PureComponent } from 'react'
 import ProductAmount from '../ProductAmount'
 import MainInfo from './MainInfo'
 import ProductImage from './ProductImage'
+
 import * as S from './style'
 
-export class Cart extends PureComponent<ProductQueryProps> {
+interface CartProps extends ProductQueryProps {
+  itemAmount?: number
+}
+
+export class Cart extends PureComponent<CartProps> {
 	render() {
 		return (
 			<S.CartContainer>
@@ -19,7 +24,7 @@ export class Cart extends PureComponent<ProductQueryProps> {
 						prices={this.props.prices}
 					/>
 
-					<ProductAmount />
+					<ProductAmount itemAmount={this.props.itemAmount} />
 				</S.MainInfoContainer>
 
 				<ProductImage images={this.props.gallery} />

@@ -1,9 +1,9 @@
 import emptyCart from 'assets/icons/emptyCart.svg'
 import Modal from 'components/Modal'
 import MiniCartContainer from 'containers/MiniCart'
-import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { CartAmountProps } from 'redux/features/cartAmountSlice'
 import { CartModalProps, toggleCartModal } from 'redux/features/cartModalSlice'
 import {
 	CurrencyModalProps,
@@ -16,6 +16,7 @@ import { getFromLocalStorage } from 'utils/LocalStorage'
 import * as S from './style'
 
 interface MiniCartProps {
+	cartAmount: CartAmountProps
 	cartModal: CartModalProps
 	currencyModal: CurrencyModalProps
 	toggleCurrencyModal: () => void
@@ -25,7 +26,8 @@ interface MiniCartProps {
 export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
 		const cartProducts: CartObjectProps[] = getFromLocalStorage('cart')
-		const amount = cartProducts?.length
+		const getAmount = (): number => cartProducts?.length
+		const amount = getAmount()
 
 		const handleToggleModal = () => {
 			if (this.props.currencyModal.open) this.props.toggleCurrencyModal()
@@ -54,6 +56,7 @@ export class MiniCart extends PureComponent<MiniCartProps> {
 const mapStateToProps = (state: RootState) => ({
 	currencyModal: state.currencyModal,
 	cartModal: state.cartModal,
+	cartAmount: state.cartAmount,
 })
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {

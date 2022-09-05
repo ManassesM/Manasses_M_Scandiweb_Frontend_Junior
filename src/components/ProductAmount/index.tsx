@@ -7,6 +7,7 @@ import * as S from './style'
 
 interface ProductAmountProps {
 	isMiniCart?: boolean
+	itemAmount?: number
 }
 
 export class ProductAmount extends PureComponent<ProductAmountProps> {
@@ -20,7 +21,7 @@ export class ProductAmount extends PureComponent<ProductAmountProps> {
 						height={this.props?.isMiniCart ? 8 : 15}
 					/>
 				</S.Box>
-				<p>N</p> {/* TODO */}
+				<p>{this.props.itemAmount}</p>
 				<S.Box isMinicart={this.props?.isMiniCart}>
 					<Image
 						src={minus}
