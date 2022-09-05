@@ -18,11 +18,11 @@ interface CartContainerProps {
 
 export class CartContainer extends PureComponent<CartContainerProps> {
 	render() {
+		const { currency } = this.props
+    
 		const cartProducts: ReturnCartObjectProps[] = getFromLocalStorage('cart')
 		const filteredProducts = filteredCart({ products: cartProducts })
-
-		const { currency } = this.props
-		let totalPrice = getTotalPrice(cartProducts, currency) || 0
+		const totalPrice = getTotalPrice(cartProducts, currency) || 0
 		const taxes = Number((totalPrice * 0.21).toFixed(2))
 
 		return (
@@ -30,12 +30,12 @@ export class CartContainer extends PureComponent<CartContainerProps> {
 				<p>CART</p>
 
 				<S.CartItems>
-					{cartProducts?.map(({ product }) => {
+					{filteredProducts?.map(({ product, counting }) => {
 						return (
 							<Cart
 								key={product.shortId}
 								product={product}
-								itemAmount={1}
+								itemAmount={counting || 0}
 							/>
 						)
 					})}
