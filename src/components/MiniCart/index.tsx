@@ -8,10 +8,9 @@ import {
 	incrementAmount,
 } from 'redux/features/cartAmountSlice'
 import { AppDispatch } from 'redux/store'
-import { addToCart } from 'utils/AddToCart'
 import { ProductProps } from 'utils/CartObject'
-import { getDefaultAttributes } from 'utils/GetDefaultAttributes'
-import { getFromLocalStorage, setToLocalStorage } from 'utils/LocalStorage'
+import { productDecrement } from 'utils/ProductDecrement'
+import { productIncrement } from 'utils/ProductIncrement'
 import MainInfo from './MainInfo'
 
 import * as S from './style'
@@ -26,24 +25,19 @@ interface MiniCartProps {
 
 export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
+		const itemAmount = this.props.itemAmount || 0
+
 		const { name, brand, attributes, prices, gallery } =
 			this.props.product.product
 
 		const handleClickIncrement = () => {
 			const product: QRProduct = { product: this.props.product.product }
-			const defaultProps = getDefaultAttributes(this.props.product.shortId)
-
-			addToCart({ product, defaultProps })
+			productIncrement({ product, shortId: this.props.shortId })
 			this.props.incrementAmount()
 		}
 
 		const handleClickDecrement = () => {
-			const cartProducts = getFromLocalStorage('cart')
-			const filteredProducts = cartProducts.filter(
-				({ product }) => product.shortId !== this.props.shortId
-			)
-
-			setToLocalStorage('cart', filteredProducts)
+			productDecrement(this.props.shortId)
 			this.props.decrementAmount()
 		}
 
@@ -59,7 +53,7 @@ export class MiniCart extends PureComponent<MiniCartProps> {
 					/>
 					<ProductAmount
 						isMiniCart
-						itemAmount={this.props.itemAmount || 0}
+						itemAmount={itemAmount}
 						onClickDecrement={handleClickDecrement}
 						onClickIncrement={handleClickIncrement}
 					/>
