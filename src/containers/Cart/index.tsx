@@ -5,7 +5,6 @@ import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { RootState } from 'redux/store'
-import { ReturnCartObjectProps } from 'utils/CartObject'
 import { filteredCart } from 'utils/FilteredCart'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
@@ -19,8 +18,8 @@ interface CartContainerProps {
 export class CartContainer extends PureComponent<CartContainerProps> {
 	render() {
 		const { currency } = this.props
-    
-		const cartProducts: ReturnCartObjectProps[] = getFromLocalStorage('cart')
+
+		const cartProducts = getFromLocalStorage('cart')
 		const filteredProducts = filteredCart({ products: cartProducts })
 		const totalPrice = getTotalPrice(cartProducts, currency) || 0
 		const taxes = Number((totalPrice * 0.21).toFixed(2))
@@ -33,6 +32,7 @@ export class CartContainer extends PureComponent<CartContainerProps> {
 					{filteredProducts?.map(({ product, counting }) => {
 						return (
 							<Cart
+								shortId={product.shortId}
 								key={product.shortId}
 								product={product}
 								itemAmount={counting || 0}

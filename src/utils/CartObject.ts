@@ -25,10 +25,5 @@ export function cartObject({ product, defaultProps }: CartObjectProps) {
 		defaultProps,
 	} as ReturnCartObjectProps
 
-	// const updatedObject = {
-	// 	product,
-	// 	defaultProps,
-	// } as CartObjectProps
-
 	return updatedObject
 }

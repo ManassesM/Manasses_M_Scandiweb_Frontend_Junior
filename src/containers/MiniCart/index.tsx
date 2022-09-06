@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toggleCartModal } from 'redux/features/cartModalSlice'
 import { AppDispatch, RootState } from 'redux/store'
-import { ReturnCartObjectProps } from 'utils/CartObject'
 import { filteredCart } from 'utils/FilteredCart'
 import { getTotalPrice } from 'utils/GetTotalPrice'
 import { getFromLocalStorage } from 'utils/LocalStorage'
@@ -23,7 +22,7 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 	render() {
 		const { currency } = this.props
 
-		const cartProducts: ReturnCartObjectProps[] = getFromLocalStorage('cart')
+		const cartProducts = getFromLocalStorage('cart')
 		const filteredProducts = filteredCart({ products: cartProducts })
 		const totalPrice = getTotalPrice(cartProducts, currency)
 
@@ -41,6 +40,7 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 							{filteredProducts?.map(({ product, counting }) => (
 								<MiniCart
 									key={product.shortId}
+                  shortId={product.shortId}
 									product={product}
 									itemAmount={counting || 0}
 								/>

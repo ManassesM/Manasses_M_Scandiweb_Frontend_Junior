@@ -1,6 +1,8 @@
-export function getFromLocalStorage(itemName: string): any | undefined {
+import { ReturnCartObjectProps } from './CartObject'
+
+export function getFromLocalStorage(itemName: string): ReturnCartObjectProps[] {
 	const localItem = localStorage.getItem(itemName)
-	if (!localItem) return
+	if (!localItem) return []
 	return JSON.parse(localItem)
 }
 

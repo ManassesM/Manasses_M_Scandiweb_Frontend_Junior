@@ -15,7 +15,7 @@ export function filteredCart({ products }: FilteredCartProps) {
 	let ids = [] as string[]
 	let finalObj = [] as ReturnFilteredCartProps[]
 
-	products.reduce<ReturnFilteredCartProps[]>(
+	products?.reduce<ReturnFilteredCartProps[]>(
 		(acc, { product, defaultProps }) => {
 			if (!ids.includes(JSON.stringify(defaultProps))) {
 				finalObj = [
