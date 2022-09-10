@@ -10,6 +10,7 @@ import {
 	toggleCurrencyModal,
 } from 'redux/features/currencyModalSlice'
 import { AppDispatch, RootState } from 'redux/store'
+import { ReturnCartObjectProps } from 'utils/CartObject'
 import { getFromLocalStorage } from 'utils/LocalStorage'
 
 import * as S from './style'
@@ -24,7 +25,7 @@ interface MiniCartProps {
 
 export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
-		const cartProducts = getFromLocalStorage('cart')
+		const cartProducts = getFromLocalStorage<ReturnCartObjectProps[]>('cart')
 		const getAmount = (): number => cartProducts?.length
 		const amount = getAmount()
 

@@ -1,6 +1,6 @@
 import { QRProduct } from 'queries/GET_PRODUCT_BY_ID'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
-import { cartObject } from './CartObject'
+import { cartObject, ReturnCartObjectProps } from './CartObject'
 import { getFromLocalStorage, setToLocalStorage } from './LocalStorage'
 
 interface HandleAddToCartProps {
@@ -9,8 +9,8 @@ interface HandleAddToCartProps {
 }
 
 export function addToCart({ product, defaultProps }: HandleAddToCartProps) {
-	const cartProducts = getFromLocalStorage('cart')
-
+	const cartProducts = getFromLocalStorage<ReturnCartObjectProps[]>('cart')
+	
 	const updatedData = cartObject({
 		product,
 		defaultProps,
