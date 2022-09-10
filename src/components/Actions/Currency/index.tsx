@@ -1,7 +1,7 @@
 import arrowDown from 'assets/icons/arrowDown.svg'
 import arrowUp from 'assets/icons/arrowUp.svg'
 import { Image } from 'components/Image'
-import { Popper } from 'components/Popper'
+import Modal from 'components/Modal'
 import { CurrencyProps as ICurrency } from 'queries/GET_CURRENCIES'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
@@ -41,12 +41,14 @@ export class Currency extends PureComponent<CurrencyProps> {
 					/>
 				</S.CurrencyContainer>
 
-				<Popper
+				<Modal
 					close={this.props.currencyModal.open}
 					onClose={handleToggleModal}
+					width={114}
+					height={200}
 				>
 					<CurrencyItems />
-				</Popper>
+				</Modal>
 			</>
 		)
 	}

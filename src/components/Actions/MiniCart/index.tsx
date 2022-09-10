@@ -44,6 +44,7 @@ export class MiniCart extends PureComponent<MiniCartProps> {
 					onClose={handleToggleModal}
 					width={325}
 					height={677}
+					hasBg
 				>
 					<MiniCartContainer />
 				</Modal>
