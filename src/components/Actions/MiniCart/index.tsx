@@ -26,6 +26,7 @@ interface MiniCartProps {
 export class MiniCart extends PureComponent<MiniCartProps> {
 	render() {
 		const cartProducts = getFromLocalStorage<ReturnCartObjectProps[]>('cart')
+
 		const getAmount = (): number => cartProducts?.length
 		const amount = getAmount()
 

@@ -29,7 +29,7 @@ export class ProductsContainer extends PureComponent<ProductsContainerProps> {
 					return (
 						<S.ProductsGrid>
 							{data?.category.products?.map((product) => (
-								<ProductCard {...product} key={product.id} />
+								<ProductCard product={product} key={product.id} />
 							))}
 						</S.ProductsGrid>
 					)

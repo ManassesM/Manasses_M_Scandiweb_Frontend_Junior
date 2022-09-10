@@ -1,5 +1,6 @@
 import gql from 'graphql-tag'
 import { CurrencyProps } from './GET_CURRENCIES'
+import { AttributeProps } from './GET_PRODUCT_BY_ID'
 
 export interface ProductProps {
 	id: string
@@ -12,6 +13,8 @@ export interface ProductProps {
 		amount: number
 		currency: CurrencyProps
 	}[]
+	description: string
+	attributes: AttributeProps[]
 }
 
 export interface ProductsQueryProps {
@@ -40,6 +43,16 @@ export const GET_PRODUCTS_BY_CATEGORY = gql`
 						symbol
 					}
 					amount
+				}
+				attributes {
+					id
+					type
+					name
+					items {
+						id
+						value
+						displayValue
+					}
 				}
 			}
 		}

@@ -9,18 +9,13 @@ import * as S from './style'
 
 interface MiniCartButtonProps {
 	toggleCartModal: () => void
+	onClick: (e: any) => void
 }
 
 export class MiniCartButton extends PureComponent<MiniCartButtonProps> {
 	render() {
-		const handleClickMiniCart = (e: any) => {
-			e.preventDefault()
-			e.stopPropagation()
-			this.props.toggleCartModal()
-		}
-
 		return (
-			<S.MiniCartButtonContainer onClick={handleClickMiniCart}>
+			<S.MiniCartButtonContainer onClick={this.props.onClick}>
 				<Image
 					src={emptyCartLight}
 					width={24}
