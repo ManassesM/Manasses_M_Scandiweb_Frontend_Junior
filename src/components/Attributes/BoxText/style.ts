@@ -3,6 +3,7 @@ import styled from 'styled-components'
 interface BoxTextContainerProps {
 	active: boolean
 	isMinicart: boolean
+	isHover: boolean
 }
 
 export const BoxTextContainer = styled.div<BoxTextContainerProps>`
@@ -17,12 +18,11 @@ export const BoxTextContainer = styled.div<BoxTextContainerProps>`
 
 	height: ${({ isMinicart }) => `${isMinicart ? '2em' : '2.5em'}`};
 
-	cursor: pointer;
-
 	transition: all 0.1s ease-in-out;
 	&:hover {
-		background: ${({ theme }) => theme.palette.black};
-		color: ${({ theme }) => theme.palette.white};
+		cursor: ${({ isHover }) => isHover && 'pointer'};
+		background: ${({ isHover, theme }) => isHover && theme.palette.black};
+		color: ${({ isHover, theme }) => isHover && theme.palette.white};
 	}
 
 	p {

@@ -9,7 +9,7 @@ const initialState = getFromLocalStorage<CurrencyProps>('currency', {
 
 const currencySlice = createSlice({
 	name: 'currency',
-	initialState: initialState,
+	initialState,
 	reducers: {
 		changeCurrency(state, { payload }: PayloadAction<CurrencyProps>) {
 			state.label = payload.label

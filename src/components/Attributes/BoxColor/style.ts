@@ -4,11 +4,13 @@ interface BoxColorContainerProps {
 	active: boolean
 	bgColor: string
 	isMinicart?: boolean
+	isHover: boolean
 }
 
 interface WrapperBoxColorProps {
 	active: boolean
 	isMinicart?: boolean
+	isHover: boolean
 }
 
 export const BoxColorContainer = styled.div<BoxColorContainerProps>`
@@ -22,7 +24,7 @@ export const BoxColorContainer = styled.div<BoxColorContainerProps>`
 	height: ${({ isMinicart }) => (isMinicart ? '16px' : '32px')};
 	width: ${({ isMinicart }) => (isMinicart ? '16px' : '32px')};
 
-	cursor: pointer;
+	cursor: ${({ isHover }) => isHover && 'pointer'};
 `
 
 export const WrapperBoxColor = styled.div<WrapperBoxColorProps>`
@@ -33,6 +35,7 @@ export const WrapperBoxColor = styled.div<WrapperBoxColorProps>`
 	width: ${({ isMinicart }) => (isMinicart ? '20px' : '36px')};
 
 	&:hover {
-		border: ${({ theme }) => `1px solid ${theme.palette.main}`};
+		border: ${({ isHover, theme }) =>
+			isHover && `1px solid ${theme.palette.main}`};
 	}
 `

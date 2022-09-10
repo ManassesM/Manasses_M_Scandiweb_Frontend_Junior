@@ -6,6 +6,7 @@ import * as S from './style'
 interface BoxTextProps extends ItemProps {
 	isMinicart?: boolean
 	active?: boolean
+	isHover?: boolean
 }
 
 export class BoxText extends PureComponent<BoxTextProps> {
@@ -14,6 +15,7 @@ export class BoxText extends PureComponent<BoxTextProps> {
 			<S.BoxTextContainer
 				active={this.props.active || false}
 				isMinicart={this.props.isMinicart || false}
+				isHover={this.props.isHover || false}
 			>
 				<p>{this.props.value}</p>
 			</S.BoxTextContainer>

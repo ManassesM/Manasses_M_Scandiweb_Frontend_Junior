@@ -23,16 +23,16 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 	render() {
 		const { currency } = this.props
 
-		const cartProducts = getFromLocalStorage<ReturnCartObjectProps[]>('cart')
-		const filteredProducts = filteredCart({ products: cartProducts })
-		const totalPrice = getTotalPrice(cartProducts, currency)
+		const cart = getFromLocalStorage<ReturnCartObjectProps[]>('cart')
+		const filteredProducts = filteredCart({ products: cart })
+		const totalPrice = getTotalPrice(cart, currency)
 
 		return (
 			<S.MiniCartContainer>
 				<div>
 					<p>
 						<strong>My Bag, </strong>
-						{cartProducts?.length} items
+						{cart?.length} {cart?.length === 1 ? 'item' : 'items'}
 					</p>
 				</div>
 				<S.WrapperMiniCart>
@@ -69,7 +69,7 @@ export class MiniCartContainer extends PureComponent<MiniCartContainerProps> {
 							onClick={() => this.props.toggleCartModal()}
 						/>
 					</Link>
-					<Link to='/'>
+					<Link to='/all'>
 						<Button
 							width={140}
 							height={43}

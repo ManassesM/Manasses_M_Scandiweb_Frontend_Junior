@@ -13,7 +13,7 @@ class NotFound extends PureComponent {
 				<S.ContainerNotFound>
 					<h3>Page Not Found!</h3>
 
-					<Link to='/'>
+					<Link to='/all'>
 						<Image
 							src={EmptyCart}
 							alt='Empty Cart'

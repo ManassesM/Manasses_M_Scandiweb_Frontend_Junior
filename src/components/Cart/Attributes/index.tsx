@@ -1,8 +1,8 @@
-import Items from 'components/Cart/Attributes/Items'
 import { AttributeProps as IAttribute } from 'queries/GET_PRODUCT_BY_ID'
 import { PureComponent } from 'react'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
 import { WrapperAttributesStyle } from 'styles/attributes'
+import Items from './Items'
 
 interface AttributesProps {
 	attributes: IAttribute[]

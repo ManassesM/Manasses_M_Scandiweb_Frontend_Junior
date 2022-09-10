@@ -16,7 +16,7 @@ interface ProductCardProps extends ProductProps {
 
 export class ProductCard extends PureComponent<ProductCardProps> {
 	render() {
-		const { inStock, prices, name, currency } = this.props
+		const { inStock, prices, name, brand, currency } = this.props
 
 		const price = getProductPrice({ currency, prices })
 
@@ -28,7 +28,9 @@ export class ProductCard extends PureComponent<ProductCardProps> {
 				) : null}
 
 				<S.ProductContent>
-					<span>{name}</span>
+					<span>
+						{brand} {name}
+					</span>
 					<strong>
 						{price?.currency.symbol}
 						{price?.amount}

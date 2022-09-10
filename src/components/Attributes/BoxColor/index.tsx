@@ -6,6 +6,7 @@ import * as S from './style'
 interface BoxColorProps extends ItemProps {
 	isMinicart?: boolean
 	active?: boolean
+	isHover?: boolean
 }
 
 export class BoxColor extends PureComponent<BoxColorProps> {
@@ -14,11 +15,13 @@ export class BoxColor extends PureComponent<BoxColorProps> {
 			<S.WrapperBoxColor
 				active={this.props.active || false}
 				isMinicart={this.props.isMinicart}
+				isHover={this.props.isHover || false}
 			>
 				<S.BoxColorContainer
 					active={this.props.active || false}
 					bgColor={this.props.value}
 					isMinicart={this.props.isMinicart}
+					isHover={this.props.isHover || false}
 				/>
 			</S.WrapperBoxColor>
 		)

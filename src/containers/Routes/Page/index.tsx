@@ -2,7 +2,7 @@ import { Cart, NotFound, Product, Products } from 'pages'
 
 import { CategoryProps } from 'queries/GET_CATEGORIES'
 import { PureComponent } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 interface PageProps {
 	routes: CategoryProps[]
@@ -12,7 +12,8 @@ export class Page extends PureComponent<PageProps> {
 	render() {
 		return (
 			<Routes>
-				<Route path='/' element={<Products />} />
+				<Route path='/' element={<Navigate replace to='/all' />} />
+				<Route path='/all' element={<Products />} />
 				{this.props.routes.map((category) => (
 					<Route
 						key={category.name}

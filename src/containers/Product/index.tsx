@@ -11,7 +11,10 @@ import { PureComponent } from 'react'
 import { Query, QueryResult } from 'react-apollo'
 import { connect } from 'react-redux'
 import { incrementAmount } from 'redux/features/cartAmountSlice'
-import { DefaultProps } from 'redux/features/defaultPropsSlice'
+import {
+	DefaultProps,
+	updateDefaultProps,
+} from 'redux/features/defaultPropsSlice'
 import { AppDispatch, RootState } from 'redux/store'
 import { addToCart } from 'utils/AddToCart'
 
@@ -23,6 +26,7 @@ interface ProductContainerStateProps {
 
 interface ProductContainerProps {
 	defaultProps: DefaultProps
+	changeDefaultProps: (defaultProps?: DefaultProps) => void
 	incrementAmount: () => void
 }
 
@@ -45,6 +49,7 @@ export class ProductContainer extends PureComponent<
 		const handleAddToCart = (product: QRProduct) => {
 			addToCart({ product, defaultProps: this.props.defaultProps.data || [] })
 			this.props.incrementAmount()
+			this.props.changeDefaultProps({})
 		}
 
 		return (
@@ -83,6 +88,10 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
 	return {
+		changeDefaultProps: (defaultProps: DefaultProps) => {
+			dispatch(updateDefaultProps(defaultProps))
+		},
+
 		incrementAmount: () => {
 			dispatch(incrementAmount())
 		},

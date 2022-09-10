@@ -34,13 +34,23 @@ export class Items extends PureComponent<ItemsProps> {
 					if (this.props.type === 'text')
 						return (
 							<div key={item.id} onClick={() => handleClickBox(item)}>
-								<BoxText key={item.id} {...item} active={isActive(item)} />
+								<BoxText
+									key={item.id}
+									{...item}
+									active={isActive(item)}
+									isHover
+								/>
 							</div>
 						)
 					if (this.props.type === 'swatch')
 						return (
 							<div key={item.id} onClick={() => handleClickBox(item)}>
-								<BoxColor key={item.id} {...item} active={isActive(item)} />
+								<BoxColor
+									key={item.id}
+									{...item}
+									active={isActive(item)}
+									isHover
+								/>
 							</div>
 						)
 					return null

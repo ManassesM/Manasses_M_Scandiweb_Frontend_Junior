@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { currencyMiddleware } from './currencyMiddleware'
 import cartAmountReducer from './features/cartAmountSlice'
 import cartModalReducer from './features/cartModalSlice'
 import categoryReducer from './features/categorySlice'
 import currencyModalReducer from './features/currencyModalSlice'
 import currencyReducer from './features/currencySlice'
 import defaultPropsReducer from './features/defaultPropsSlice'
+import { middleware } from './middleware'
 
 export const store = configureStore({
 	reducer: {
@@ -17,7 +17,7 @@ export const store = configureStore({
 		cartAmount: cartAmountReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(currencyMiddleware),
+		getDefaultMiddleware().concat(middleware),
 })
 
 export type AppDispatch = typeof store.dispatch

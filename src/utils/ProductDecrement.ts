@@ -8,5 +8,4 @@ export function productDecrement(shortId: string) {
 	)
 
 	setToLocalStorage('cart', filteredProducts)
-	window.location.reload() // because I didn't find a way to re-render the entire page
 }

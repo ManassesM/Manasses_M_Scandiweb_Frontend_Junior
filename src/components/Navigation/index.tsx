@@ -30,7 +30,7 @@ export class Navigation extends PureComponent<NavigationProps> {
 							{data?.categories?.map(({ name }) => (
 								<NavLink
 									key={name}
-									to={name === 'all' ? '/' : name}
+									to={name}
 									style={NavLinkStyles}
 									onClick={() => handleCategory(name)}
 								>

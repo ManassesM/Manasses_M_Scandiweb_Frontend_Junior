@@ -10,5 +10,4 @@ interface ProductIncrementProps {
 export function productIncrement({ product, shortId }: ProductIncrementProps) {
 	const defaultProps = getDefaultAttributes(shortId)
 	addToCart({ product, defaultProps })
-	window.location.reload() // because I didn't find a way to re-render the entire page
 }

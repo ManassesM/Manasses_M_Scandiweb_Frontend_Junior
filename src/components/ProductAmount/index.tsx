@@ -16,7 +16,7 @@ export class ProductAmount extends PureComponent<ProductAmountProps> {
 	render() {
 		const handleClick = (type: 'increment' | 'decrement') => {
 			if (type === 'increment') return this.props.onClickIncrement()
-			if (this.props.itemAmount > 0) this.props.onClickDecrement()
+			this.props.onClickDecrement()
 		}
 
 		return (
