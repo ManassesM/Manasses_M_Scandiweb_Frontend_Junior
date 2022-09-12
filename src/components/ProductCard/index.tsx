@@ -4,8 +4,9 @@ import { CurrencyProps } from 'queries/GET_CURRENCIES'
 import { ProductProps } from 'queries/GET_PRODUCTS_BY_CATEGORY'
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { toggleCartModal } from 'redux/features/cartModalSlice'
 import { DefaultPropsObject } from 'redux/features/defaultPropsSlice'
-import { RootState } from 'redux/store'
+import { AppDispatch, RootState } from 'redux/store'
 import { addToCart } from 'utils/AddToCart'
 import { cartObject } from 'utils/CartObject'
 import { getProductPrice } from 'utils/GetProductPrice'
@@ -16,6 +17,7 @@ import * as S from './style'
 interface ProductCardProps {
 	currency: CurrencyProps
 	product: ProductProps
+	toggleCartModal: () => void
 }
 
 export class ProductCard extends PureComponent<ProductCardProps> {
@@ -44,6 +46,7 @@ export class ProductCard extends PureComponent<ProductCardProps> {
 			})
 
 			addToCart({ product: newProduct.product, defaultProps })
+      this.props.toggleCartModal()
 		}
     
 		return (
@@ -73,4 +76,12 @@ const mapStateToProps = (state: RootState) => ({
 	currency: state.currency,
 })
 
-export default connect(mapStateToProps)(ProductCard)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+	return {
+		toggleCartModal: () => {
+			dispatch(toggleCartModal())
+		},
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard)

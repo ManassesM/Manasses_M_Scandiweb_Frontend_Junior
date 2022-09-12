@@ -35,11 +35,13 @@ export class Cart extends PureComponent<CartProps> {
 			const product: QRProduct = { product: this.props.product.product }
 			productIncrement({ product, shortId: this.props.shortId })
 			this.props.incrementAmount()
+			window.location.reload()
 		}
 
 		const handleClickDecrement = () => {
 			productDecrement(this.props.shortId)
 			this.props.decrementAmount()
+			window.location.reload()
 		}
 
 		return (

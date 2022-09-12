@@ -7,6 +7,7 @@ import {
 	decrementAmount,
 	incrementAmount,
 } from 'redux/features/cartAmountSlice'
+import { toggleCartModal } from 'redux/features/cartModalSlice'
 import { AppDispatch } from 'redux/store'
 import { ProductProps } from 'utils/CartObject'
 import { productDecrement } from 'utils/ProductDecrement'
@@ -21,6 +22,7 @@ interface MiniCartProps {
 	itemAmount?: number
 	incrementAmount: () => void
 	decrementAmount: () => void
+	toggleCartModal: () => void
 }
 
 export class MiniCart extends PureComponent<MiniCartProps> {
@@ -34,11 +36,13 @@ export class MiniCart extends PureComponent<MiniCartProps> {
 			const product: QRProduct = { product: this.props.product.product }
 			productIncrement({ product, shortId: this.props.shortId })
 			this.props.incrementAmount()
+      this.props.toggleCartModal()
 		}
 
 		const handleClickDecrement = () => {
 			productDecrement(this.props.shortId)
 			this.props.decrementAmount()
+      this.props.toggleCartModal()
 		}
 
 		return (
@@ -72,6 +76,9 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
 		decrementAmount: () => {
 			dispatch(decrementAmount())
 		},
+    toggleCartModal: () => {
+      dispatch(toggleCartModal())
+    }
 	}
 }
 
